@@ -1,7 +1,12 @@
-﻿namespace Data
+﻿using Microsoft.Extensions.Configuration;
+using Util;
+
+namespace Data
 {
-    public abstract class BaseRepository
+    public class BaseRepository
     {
-        public string Connstring = @"Host=localhost;Database=postgres;Username=postgres;Password=admin";
+        public static IConfigurationRoot Configuration { get; set; }
+
+        public string Connstring = UtilsClass.GetConnectionString();
     }
 }

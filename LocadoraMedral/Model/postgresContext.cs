@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Model;
+using Util;
 
 namespace Model
 {
@@ -17,7 +17,7 @@ namespace Model
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql(@"Host=localhost;Database=postgres;Username=postgres;Password=admin");
+                optionsBuilder.UseNpgsql(UtilsClass.GetConnectionString());
             }
         }
 
