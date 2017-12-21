@@ -12,7 +12,7 @@ namespace Data
             bool ret;
             using (var db = new NpgsqlConnection(Connstring))
             {
-                const string sql = @"SELECT ""tbClienteID"" FROM ""tbLocacao"" WHERE ""DataDevolucao"" IS NOT NULL;";
+                const string sql = @"SELECT ""tbClienteID"" FROM ""tbLocacao"" WHERE ""DataDevolucao"" IS NOT NULL AND @Id = ""tbFilmeID"";";
 
                 ret = db.Query<bool>(sql, new { Id = filmeId }, commandType: CommandType.Text).Any();
             }
