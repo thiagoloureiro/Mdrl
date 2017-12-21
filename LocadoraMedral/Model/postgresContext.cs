@@ -10,11 +10,14 @@ namespace LocadoraMedral.Model
         public virtual DbSet<TbFilme> TbFilme { get; set; }
         public virtual DbSet<TbLocacao> TbLocacao { get; set; }
 
+        public postgresContext(DbContextOptions<postgresContext> options)
+            : base(options)
+        { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseNpgsql(@"Host=localhost;Database=postgres;Username=postgres;Password=admin");
             }
         }

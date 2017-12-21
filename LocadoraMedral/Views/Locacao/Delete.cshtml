@@ -1,0 +1,45 @@
+﻿@model LocadoraMedral.Model.TbLocacao
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TbLocacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataLocacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataLocacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDevolucao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataDevolucao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TbCliente)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TbCliente.Cpf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TbFilme)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TbFilme.Filme)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
