@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace LocadoraMedral.Model
+namespace Model
 {
-    public partial class TbFilme
+    public class TbFilme
     {
         public TbFilme()
         {

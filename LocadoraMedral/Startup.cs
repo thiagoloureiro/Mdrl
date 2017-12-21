@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LocadoraMedral.Model;
+using Data;
+using Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Service;
 
 namespace LocadoraMedral
 {
@@ -32,6 +34,10 @@ namespace LocadoraMedral
                     b => b.MigrationsAssembly("AspNet5MultipleProject")
                 )
             );
+
+            // DI Containers Registration
+            services.AddTransient<IFilmeRepository, FilmeRepository>();
+            services.AddTransient<IFilmeService, FilmeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

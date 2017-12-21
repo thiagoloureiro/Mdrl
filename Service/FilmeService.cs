@@ -20,5 +20,10 @@ namespace Service
         {
             return _filmeRepository.Reservar(filmeId, clienteId);
         }
+
+        public void Devolver(int filmeId)
+        {
+            _filmeRepository.Devolver(filmeId);
+        }
     }
 }

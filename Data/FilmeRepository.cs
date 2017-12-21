@@ -27,12 +27,24 @@ namespace Data
             {
                 const string sql = @"INSERT INTO ""tbLocacao""
                 (""tbClienteID"", ""tbFilmeID"", ""dataLocacao"", ""DataDevolucao"")
-                VALUES (@ClienteID , @FilmeID ,NOW(), NULL);";
+                VALUES (@ClienteID, @FilmeID, NOW(), NULL);";
 
-                ret = db.Query<bool>(sql, new { Id = filme }, commandType: CommandType.Text).Any();
+                ret = db.Query<bool>(sql, new { FilmeID = filme, ClienteID = clienteId }, commandType: CommandType.Text).Any();
             }
 
             return ret;
+        }
+
+        public void Devolver(int filmeId)
+        {
+            using (var db = new NpgsqlConnection(Connstring))
+            {
+                const string sql = @"INSERT INTO ""tbLocacao""
+                (""tbClienteID"", ""tbFilmeID"", ""dataLocacao"", ""DataDevolucao"")
+                VALUES (@ClienteID, @FilmeID, NOW(), NULL);";
+
+                db.Execute(sql, new { Id = filmeId }, commandType: CommandType.Text);
+            }
         }
     }
 }

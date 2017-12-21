@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using Model;
 
-namespace LocadoraMedral.Model
+namespace Model
 {
     public partial class postgresContext : DbContext
     {

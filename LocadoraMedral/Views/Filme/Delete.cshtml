@@ -1,4 +1,4 @@
-﻿@model LocadoraMedral.Model.TbFilme
+﻿@model Model.TbFilme
 
 @{
     ViewData["Title"] = "Delete";
@@ -24,7 +24,7 @@
             @Html.DisplayFor(model => model.Genero)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

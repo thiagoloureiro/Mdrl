@@ -1,6 +1,4 @@
-using System;
-
-namespace LocadoraMedral.Models
+namespace Model
 {
     public class ErrorViewModel
     {
