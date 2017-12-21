@@ -17,5 +17,28 @@ namespace Tests
             // Assert
             Assert.True(ret);
         }
+
+        [Fact]
+        public void AlugaFilme()
+        {
+            // Arrange
+            var obj = new FilmeRepository();
+
+            // Act
+            obj.Reservar(1, 1);
+        }
+
+        [Fact]
+        public void DevolveFilme()
+        {
+            // Arrange
+            var obj = new FilmeRepository();
+
+            // Act
+            obj.Devolver(1);
+
+            // Assert
+            Assert.True(true);
+        }
     }
 }

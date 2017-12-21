@@ -40,9 +40,9 @@ namespace Data
         {
             using (var db = new NpgsqlConnection(Connstring))
             {
-                const string sql = @"INSERT INTO ""tbLocacao""
-                (""tbClienteID"", ""tbFilmeID"", ""dataLocacao"", ""DataDevolucao"")
-                VALUES (@ClienteID, @FilmeID, NOW(), NULL);";
+                const string sql = @"UPDATE ""tbLocacao""
+                SET  ""DataDevolucao"" = NOW()
+                WHERE ""tbFilmeID"" = @Id";
 
                 db.Execute(sql, new { Id = filmeId }, commandType: CommandType.Text);
             }

@@ -1,26 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Service;
 using System.Linq;
 using System.Threading.Tasks;
-using Service;
 
 namespace LocadoraMedral.Controllers
 {
-    public class AlugarFilmeController : Controller
+    public class DevolverFilmeController : Controller
     {
         private readonly postgresContext _context;
         private IFilmeService _filmeService;
 
-        public AlugarFilmeController(postgresContext context, IFilmeService filmeService)
+        public DevolverFilmeController(postgresContext context, IFilmeService filmeService)
         {
             _context = context;
             _filmeService = filmeService;
         }
 
-        public IActionResult Erro()
+        // GET: DevolverFilme
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.TbFilme.ToListAsync());
         }
 
         public IActionResult Sucesso()
@@ -28,14 +29,8 @@ namespace LocadoraMedral.Controllers
             return View();
         }
 
-        // GET: AlugarFilme
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.TbFilme.ToListAsync());
-        }
-
-        // GET: AlugarFilme/Edit/5
-        public IActionResult Alugar(int? id)
+        // GET: DevolverFilme/Edit/5
+        public IActionResult Devolver(int? id)
         {
             if (id == null)
             {
@@ -48,15 +43,14 @@ namespace LocadoraMedral.Controllers
                 return NotFound();
             }
 
-            var ret = _filmeService.ChecaDisponibilidade(tbFilme.Id);
-
-            if (ret == false)
-                return View("Erro");
-            else
-                _filmeService.Reservar(tbFilme.Id, 1);
+            _filmeService.Devolver(tbFilme.Id);
 
             return View("Sucesso");
         }
+
+        // POST: DevolverFilme/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 
         private bool TbFilmeExists(int id)
         {
